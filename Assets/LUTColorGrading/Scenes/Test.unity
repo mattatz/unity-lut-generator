@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -149,6 +149,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorGrading: {fileID: 1673277997}
+  filters:
+  - {fileID: 11400000, guid: ddf02e69631634e0b8afdf5698590b60, type: 2}
+  - {fileID: 11400000, guid: 23789586c3a274c4f805cbd1686f5414, type: 2}
+  debug: 1
+  lut: {fileID: 1472314558}
+--- !u!84 &1472314558
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1024
+  m_Height: 32
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1673277996
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1673278001}
   - component: {fileID: 1673278000}
+  - component: {fileID: 1673277998}
   - component: {fileID: 1673277997}
   - component: {fileID: 1673277999}
   m_Layer: 0
@@ -178,8 +211,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ccfbf7f6b2a8b4e8db704225a22eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lut: {fileID: 2800000, guid: a975e50e120010a44b95be6bf99f6e1b, type: 3}
+  lut: {fileID: 1472314558}
   shader: {fileID: 4800000, guid: d9e7ef505c887c54bb1aad5aad949654, type: 3}
+--- !u!114 &1673277998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1673277996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5aa6733565e4dcd9b990dc83d0884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 43ecf87a6791943c6ab3758d0c9b9c8b, type: 3}
+  texture: {fileID: 2800000, guid: a18883f6911244c27864491af7b0eb95, type: 3}
 --- !u!92 &1673277999
 Behaviour:
   m_ObjectHideFlags: 0
@@ -216,8 +262,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

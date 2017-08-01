@@ -7,7 +7,7 @@ namespace LUTColorGrading
 
     public class LUTColorGrading : MonoBehaviour {
 
-        public Texture2D lut;
+        public Texture lut;
         [SerializeField] Shader shader;
 
         Material material;

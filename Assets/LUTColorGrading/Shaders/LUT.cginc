@@ -1,7 +1,7 @@
 ﻿#ifndef __INCLUDE_LUT__
 #define __INCLUDE_LUT__
 
-#define DIM 16.0
+#define DIM 32.0
 static const float4 _ColorGrading_Scale = float4((DIM - 1) / (DIM * DIM), (DIM - 1) / DIM, 1 / DIM, 0);
 static const float4 _ColorGrading_Offset = float4(1 / (2 * DIM * DIM), 1 / (2 * DIM), 0, 0);
 
