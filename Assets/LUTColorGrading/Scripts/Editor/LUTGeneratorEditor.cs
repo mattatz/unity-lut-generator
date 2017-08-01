@@ -13,7 +13,7 @@ namespace LUTColorGrading
 		public override void OnInspectorGUI () {
 			EditorGUI.BeginChangeCheck();
 			base.OnInspectorGUI();
-			if(EditorGUI.EndChangeCheck()) {
+			if(EditorGUI.EndChangeCheck() && Application.isPlaying) {
 				var generator = target as LUTGenerator;
 				generator.Reset();
 			}

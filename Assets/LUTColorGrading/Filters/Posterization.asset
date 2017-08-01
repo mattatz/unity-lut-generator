@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee67109cf247447f9673737665a1f9d, type: 3}
-  m_Name: ToneCurve
+  m_Name: Posterization
   m_EditorClassIdentifier: 
   onFilterUpdate:
     m_PersistentCalls:
@@ -22,21 +22,39 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 0.1990509
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.7327017
-      value: 0.70778924
-      inSlope: 2.317425
-      outSlope: 2.317425
+      time: 0.2053719
+      value: 0.4004718
+      inSlope: Infinity
+      outSlope: Infinity
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.9961548
-      value: 0.90047836
-      inSlope: 0.295302
-      outSlope: 0.295302
+      time: 0.40307423
+      value: 0.5995178
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.6026807
+      value: 0.8056887
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.80230325
+      value: 0.9976318
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0000064
+      value: 0.99524957
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -51,8 +69,8 @@ MonoBehaviour:
       outSlope: 1
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.6123395
-      value: 0.6943774
+      time: 0.70254946
+      value: 0.552196
       inSlope: 1.0001659
       outSlope: 1.0001659
       tangentMode: 0
@@ -73,12 +91,6 @@ MonoBehaviour:
       value: 0
       inSlope: 1
       outSlope: 1
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.51642287
-      value: 0.51642287
-      inSlope: 0.03156554
-      outSlope: 0.03156554
       tangentMode: 0
     - serializedVersion: 2
       time: 1
