@@ -7,18 +7,36 @@ namespace LUTColorGrading
 
     public class LUTGenerator : MonoBehaviour {
 
+        public RenderTexture source
+        {
+            get
+            {
+                return (current == 0) ? lut0 : lut1;
+            }
+        }
+
+        public RenderTexture destination
+        {
+            get
+            {
+                return (current == 0) ? lut1 : lut0;
+            }
+        }
+
         [SerializeField] LUTColorGrading colorGrading;
 		[SerializeField] List<LUTFilter> filters;
 		[SerializeField] bool debug;
 
-		Texture2D source;
-		[SerializeField] RenderTexture lut;
+		Texture2D origin;
+		[SerializeField] RenderTexture lut0, lut1;
+        int current = 0;
 
 		Texture2D CreateLUT (int resolution = 32)
 		{
 			var tex = new Texture2D(resolution * resolution, resolution, TextureFormat.RGBAFloat, false);
 			tex.filterMode = FilterMode.Point;
 			tex.wrapMode = TextureWrapMode.Clamp;
+            tex.anisoLevel = 0;
 
 			var inv = 1f / (resolution - 1);
 
@@ -48,19 +66,28 @@ namespace LUTColorGrading
 			rt.enableRandomWrite = true;
 			rt.useMipMap = false;
 			rt.wrapMode = TextureWrapMode.Clamp;
+            rt.anisoLevel = 0;
 			rt.Create();
 			return rt;
 		}
 
 		void UpdateLUT() {
-			Graphics.Blit(source, lut);
+            current = 0;
+			Graphics.Blit(origin, source);
+			Graphics.Blit(origin, destination);
 			filters.ForEach(filter => {
 				if(filter != null) {
-					filter.Filter(lut, lut);
+					filter.Filter(source, destination);
+                    Swap();
 				}
 			});
-			colorGrading.lut = lut;
+			colorGrading.lut = source;
 		}
+
+        void Swap ()
+        {
+            current = (1 - current);
+        }
 
         void OnEnable()
         {
@@ -74,7 +101,7 @@ namespace LUTColorGrading
         }
 
 		void OnDisable () {
-			if(source != null) {
+			if(origin != null) {
 				Clear();
 			}
 		}
@@ -89,8 +116,9 @@ namespace LUTColorGrading
 		}
 
 		void Setup () {
-			source = CreateLUT();
-			lut = CreateRT(source.width, source.height);
+			origin = CreateLUT();
+			lut0 = CreateRT(origin.width, origin.height);
+			lut1 = CreateRT(origin.width, origin.height);
 			filters.ForEach(filter => {
 				if(filter != null) {
 					filter.Setup();
@@ -100,8 +128,9 @@ namespace LUTColorGrading
 		}
 
 		void Clear () {
-			Destroy(source);
-			Destroy(lut);
+			Destroy(origin);
+			Destroy(lut0);
+			Destroy(lut1);
 			filters.ForEach(filter => {
 				if(filter != null) {
 					filter.Dispose();
@@ -112,8 +141,8 @@ namespace LUTColorGrading
         void OnGUI()
         {
 			if(debug) {
-				var r = new Rect(10, 10, lut.width, lut.height);
-            	GUI.DrawTexture(r, lut);
+				var r = new Rect(10, 10, destination.width, destination.height);
+            	GUI.DrawTexture(r, destination);
 			}
         } 
 

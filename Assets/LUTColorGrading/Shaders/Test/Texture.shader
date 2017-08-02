@@ -47,7 +47,7 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				float2 scale = _Texture_TexelSize.xy / _MainTex_TexelSize.xy;
-				float2 uv = i.uv * scale;
+				float2 uv = i.uv;
 				fixed4 col = tex2D(_Texture, uv);
 				return col;
 			}
