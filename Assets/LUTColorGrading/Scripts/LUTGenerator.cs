@@ -141,8 +141,8 @@ namespace LUTColorGrading
         void OnGUI()
         {
 			if(debug) {
-				var r = new Rect(10, 10, destination.width, destination.height);
-            	GUI.DrawTexture(r, destination);
+				var r = new Rect(10, 10, source.width, source.height);
+            	GUI.DrawTexture(r, source);
 			}
         } 
 
